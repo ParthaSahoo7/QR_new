@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8006';
+const BASE_URL = 'https://gold.loyaltty.com/admin';
 
 export const sendRegisterOTP = async (mobile, countryCode,qrid) => {
   try {
