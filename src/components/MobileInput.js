@@ -37,16 +37,7 @@ const MobileInput = ({ onOTPRequest,qrId }) => {
       toast.error("Please enter a valid phone number.");
       return;
     }
-    // const match = phone.trim().match(/^\+?(\d+)\s+(.+)$/);
-    // console.log(match,phone);
-    // if (!match ) {
-    //   toast.error('Invalid phone number format');
-    //   return;
-    // }
-
-    // // Extract the country code
-    // const countryCode = `+${phone.split(' ')[0]}`;
-    // const mobileNumber = phone.replace(countryCode, '').trim();
+    
 
     const countryCode = phone.slice(0, -10);
     const mobileNumber = phone.slice(-10);
@@ -88,17 +79,15 @@ const MobileInput = ({ onOTPRequest,qrId }) => {
   };
 
   return (
-    <div className="relative w-full h-screen bg-white flex flex-col items-center justify-center">
+    <div className="cont relative w-full h-[100vh] bg-white flex flex-col items-center justify-center">
       {" "}
       <Logo />{" "}
-      <div className="relative flex flex-col items-center justify-center border border-[#040869] mb-24 p-4 rounded-[20px] w-[90%] max-w-[363px] " style={{
-          
+      <div className="relative flex flex-col items-center justify-around border border-[#040869] mb-24 p-4 rounded-[20px] w-[90%] max-w-[363px]" style={{
           height: "auto",
-          
+          minHeight: "575px",
           paddingLeft: "15px",
           paddingRight: "15px",
-          top: "20%",
-          
+          marginTop: "10vw", // Adjust this margin to provide space between logo and div
         }}>
         {" "}
         <img
@@ -145,55 +134,51 @@ const MobileInput = ({ onOTPRequest,qrId }) => {
           {loading ? "Sending..." : "Send OTP"}{" "}
         </button>{" "}
       </div>{" "}
+      <style jsx>{`
+        .cont {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          
+        }
+        @media (max-width: 375px) {
+          .cont {
+            justify-content: flex-start;
+            
+          }
+            
+        }
+          @media (max-width: 540px) {
+          .cont {
+          
+            justify-content: flex-start;
+            padding-top: 2px;
+          }
+        }
+          @media (min-width: 540px) {
+          .cont {
+          
+            justify-content: flex-start;
+            padding-top: 1px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .cont {
+            justify-content: flex-start;
+          }
+        }
+        @media (min-width: 1920px) {
+          .cont {
+            justify-content: center;
+          }
+        }
+      `}</style>
     </div>
   );
   
-  // return (
-  //   <section className="relative bg-[#E0E7FF] flex items-center justify-center h-screen">
-  //     <div 
-  //   className="absolute inset-0 bg-cover bg-center opacity-30" 
-  //   style={{
-  //     backgroundImage: `url('https://clipground.com/images/pattern-png-transparent-4.png')`,
-      
-  //   }}>
-  // </div>
-      
-        
-  //     <div className=" relative z-10 w-80 flex flex-col gap-3 rounded-lg p-1 bg-[#4169E1] p-8">
-  //       <h2 className="text-center leading-normal text-white  font-serif text-4xl ">
-  //         WELCOME TO LOYALTTY
-  //       </h2>
-  //       {/* <h4 className="text-center leading-normal text-white font-serif text-2xl  mb-6">
-  //         to LOYALTTY
-  //       </h4> */}
-  //       <>
-  //         <div className="bg-white text-[#F4D03F] w-fit mx-auto p-4 rounded-full">
-  //           <BsTelephoneFill size={30} />
-  //         </div>
-  //         <label
-  //           htmlFor=""
-  //           className="font-bold text-xl text-white text-center"
-  //         >
-  //           Verify your phone number
-  //         </label>
-  //         <PhoneInput
-  //           country={"us"}
-  //           value={phone}
-  //           onChange={(value) => setPhone(value)}
-  //         />
-  //         <button
-  //           onClick={handleSendOTP}
-  //           className="bg-[#F4D03F] w-full flex gap-1 items-center justify-center py-2.5 text-black rounded"
-  //           disabled={loading}
-  //         >
-  //           {loading ? <CgSpinner className="animate-spin mr-2" /> : null}
-  //           {loading ? "Sending..." : "Send OTP"}
-  //         </button>
-  //       </>
-  //     </div>
-      
-  //   </section>
-  // );
+  
 };
 
 export default MobileInput;

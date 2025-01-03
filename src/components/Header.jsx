@@ -240,22 +240,20 @@ const Header = () => {
   // );
 
   // ------
+ 
+ 
   return (
-    <div className="relative w-full h-screen bg-white flex flex-col items-center  justify-center">
+    <div className=" cont relative w-full h-[100vh] bg-white flex flex-col items-center  justify-center">
       {" "}
       <Logo  />{" "}
       <div
-        className="relative flex flex-col items-center justify-around  border border-[#040869] mb-24"
+        className="relative flex flex-col items-center justify-around border border-[#040869] mb-24 p-4 rounded-[20px] w-[90%] max-w-[363px]"
         style={{
-          width: "90%",
-          maxWidth: "363px",
           height: "auto",
           minHeight: "575px",
-          paddingLeft: "5px",
-          paddingRight: "5px",
-          top: "20%",
-          border: "1px solid #040869 ",
-           borderRadius: "20px",
+          paddingLeft: "15px",
+          paddingRight: "15px",
+          marginTop: "10vw", // Adjust this margin to provide space between logo and div
         }}
       >
         {" "}
@@ -419,6 +417,48 @@ const Header = () => {
           </button>{" "}
         </div>{" "}
       </div>{" "}
+
+      <style jsx>{`
+        .cont {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          
+        }
+        @media (max-width: 375px) {
+          .cont {
+            justify-content: flex-start;
+            
+          }
+            
+        }
+          @media (max-width: 540px) {
+          .cont {
+          
+            justify-content: flex-start;
+            padding-top: 2px;
+          }
+        }
+          @media (min-width: 540px) {
+          .cont {
+          
+            justify-content: flex-start;
+            padding-top: 1px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .cont {
+            justify-content: flex-start;
+          }
+        }
+        @media (min-width: 1920px) {
+          .cont {
+            justify-content: center;
+          }
+        }
+      `}</style>
     </div>
   );
 };
