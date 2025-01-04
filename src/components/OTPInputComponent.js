@@ -157,7 +157,7 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
     <div className=" cont relative w-full h-[100vh] bg-white flex flex-col items-center justify-center">
       <Logo />
       <div
-        className="relative flex flex-col items-center justify-around border border-[#040869] mb-24 p-4 rounded-[20px] w-[90%] max-w-[363px]"
+        className="contt relative flex flex-col items-center justify-around border border-[#040869] mb-1 p-4 rounded-[20px] w-[90%] max-w-[363px]"
         style={{
           height: "auto",
           minHeight: "575px",
@@ -174,9 +174,9 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
         <h2 className="font-playfair text-[#040869] text-[28px] font-semibold leading-[38px] text-center mt-6">
           Welcome to Loyaltty
         </h2>
-        <div className="text-right mt-4 w-full">
+        <div className="text-right  w-full">
           {resendTimer > 0 ? (
-            <p className="font-playfair text-[#040869] text-[14px] font-bold leading-[16.8px] underline">
+            <p className="font-playfair mt-2 text-[#040869] text-[14px] font-bold leading-[16.8px] underline">
               Resend OTP in <span>{resendTimer}s</span>
             </p>
           ) : (
@@ -213,7 +213,7 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
         />
         <button
           onClick={handleVerifyOTP}
-          className={`mt-4 w-full h-[51px] rounded-[9px] bg-[#040869] text-white font-playfair text-[22px] font-bold leading-[38px] text-center ${
+          className={`mt-2 w-full h-[51px] rounded-[9px] bg-[#040869] text-white font-playfair text-[22px] font-bold leading-[38px] text-center ${
             loading ? "flex items-center justify-center" : ""
           }`}
           disabled={loading}
@@ -245,14 +245,27 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
             justify-content: flex-start;
             padding-top: 2px;
           }
+            .contt{
+            min-height: 400px !important;
+            max-height: 500px !important;
+            margin-top: 9px !important;
+            }
         }
           @media (min-width: 540px) {
           .cont {
           
             justify-content: flex-start;
             padding-top: 1px;
+            .contt{
+            min-height: 575px !important;
+            max-height: 590px !important;
+            margin-top: 9px !important;
+            padding-bottom: 10px;
+            }
           }
         }
+          
+
         @media (min-width: 1024px) {
           .cont {
             justify-content: flex-start;

@@ -24,7 +24,7 @@ code {
   @apply flex justify-between !gap-5;
 }
 .opt-container input {
-  @apply !mr-0 flex-1 py-5 outline-none bg-[#EAEBFF] !w-14 !h-14;
+  @apply !mr-0 flex-1 py-5 outline-none bg-[#EAEBFF] !w-8 !h-8;
 }
 
 

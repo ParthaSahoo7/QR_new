@@ -247,7 +247,7 @@ const Header = () => {
       {" "}
       <Logo  />{" "}
       <div
-        className="relative flex flex-col items-center justify-around border border-[#040869] mb-24 p-4 rounded-[20px] w-[90%] max-w-[363px]"
+        className="contt relative flex flex-col gap-4 items-center justify-around border border-[#040869] mb-1 p-4 rounded-[20px] w-[90%] max-w-[363px]"
         style={{
           height: "auto",
           minHeight: "575px",
@@ -440,14 +440,27 @@ const Header = () => {
             justify-content: flex-start;
             padding-top: 2px;
           }
+            .contt{
+            min-height: 400px !important;
+            max-height: 500px !important;
+            margin-top: 9px !important;
+            }
         }
           @media (min-width: 540px) {
           .cont {
           
             justify-content: flex-start;
             padding-top: 1px;
+            .contt{
+            min-height: 575px !important;
+            max-height: 590px !important;
+            margin-top: 9px !important;
+            padding-bottom: 10px;
+            }
           }
         }
+          
+
         @media (min-width: 1024px) {
           .cont {
             justify-content: flex-start;

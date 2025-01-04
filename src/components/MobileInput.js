@@ -79,10 +79,10 @@ const MobileInput = ({ onOTPRequest,qrId }) => {
   };
 
   return (
-    <div className="cont relative w-full h-[100vh] bg-white flex flex-col items-center justify-center">
+    <div className="cont relative w-full h-[100%] bg-white flex flex-col items-center justify-center overflow-hidden">
       {" "}
       <Logo />{" "}
-      <div className="relative flex flex-col items-center justify-around border border-[#040869] mb-24 p-4 rounded-[20px] w-[90%] max-w-[363px]" style={{
+      <div className="contt relative flex flex-col items-center justify-around border border-[#040869] mb-1 p-4 rounded-[20px] w-[90%] max-w-[363px]" style={{
           height: "auto",
           minHeight: "575px",
           paddingLeft: "15px",
@@ -121,10 +121,9 @@ const MobileInput = ({ onOTPRequest,qrId }) => {
         <br />
         <br />
         <br />
-        <br />
         <button
           onClick={handleSendOTP}
-          className={`mt-4 w-full h-[51px] rounded-[9px] bg-[#040869] text-white font-playfair text-[22px] font-bold leading-[38px] text-center ${
+          className={` w-full h-[51px] rounded-[9px] bg-[#040869] text-white font-playfair text-[22px] font-bold leading-[38px] text-center ${
             loading ? "flex items-center justify-center" : ""
           }`}
           disabled={loading}
@@ -140,12 +139,13 @@ const MobileInput = ({ onOTPRequest,qrId }) => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          height: 100vh;
+          overflow: hidden;
           
         }
         @media (max-width: 375px) {
           .cont {
             justify-content: flex-start;
+            
             
           }
             
@@ -156,7 +156,19 @@ const MobileInput = ({ onOTPRequest,qrId }) => {
             justify-content: flex-start;
             padding-top: 2px;
           }
+            .contt{
+            min-height: 400px !important;
+            max-height: 500px !important;
+            margin-top: 9px !important;
+            }
         }
+        //   @media (max-width: 540px) {
+        //   .contt {
+        //     width: 80% !important; max-width: 520px !important;
+  
+            
+        //   }
+        // }
           @media (min-width: 540px) {
           .cont {
           
