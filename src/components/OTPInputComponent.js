@@ -154,16 +154,17 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
   
 
   return (
-    <div className=" cont relative w-full h-[100vh] bg-white flex flex-col items-center justify-center">
+    <div className=" cont relative w-full h-full bg-white flex flex-col items-center justify-center">
       <Logo />
       <div
-        className="contt relative flex flex-col items-center justify-around border border-[#040869] mb-1 p-4 rounded-[20px] w-[90%] max-w-[363px]"
+        className="contt relative flex flex-col items-center gap-2 border border-[#040869] mb-1 p-2 rounded-[20px] w-[90%] max-w-[363px]"
         style={{
           height: "auto",
-          minHeight: "575px",
+          minHeight: "525px",
           paddingLeft: "15px",
           paddingRight: "15px",
-          marginTop: "10vw", // Adjust this margin to provide space between logo and div
+          marginTop: "1vw",
+          overflow: "hidden",
         }}
       >
         <img
@@ -171,12 +172,12 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
           alt="Welcome1 Logo"
           className="w-[70%] max-w-[250px] h-auto"
         />
-        <h2 className="font-playfair text-[#040869] text-[28px] font-semibold leading-[38px] text-center mt-6">
+        <h2 className="font-playfair text-[#040869] text-[28px] font-semibold leading-[38px] text-center mt-1">
           Welcome to Loyaltty
         </h2>
-        <div className="text-right  w-full">
+        <div className="text-right mt-0 w-full">
           {resendTimer > 0 ? (
-            <p className="font-playfair mt-2 text-[#040869] text-[14px] font-bold leading-[16.8px] underline">
+            <p className="font-playfair text-[#040869] text-[14px] font-bold leading-[16.8px] underline">
               Resend OTP in <span>{resendTimer}s</span>
             </p>
           ) : (
@@ -193,9 +194,9 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
           value={`${countryCode}${mobile}`}
           disabled
           inputClass="w-full bg-[#EAEBFF]"
-          containerClass="w-full mt-4"
+          containerClass="w-full mt-2"
         />
-        <div className="flex items-center space-x-2 mt-4 w-full">
+        <div className="flex items-center space-x-2 mt-1 w-full">
           <img src={phoneLogo} alt="Phone Logo" className="w-[19px] h-[19px]" />
           <p className="font-playfair text-[#040869] text-[18px] font-bold leading-[21.6px]">
             Enter the OTP
@@ -213,7 +214,7 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
         />
         <button
           onClick={handleVerifyOTP}
-          className={`mt-2 w-full h-[51px] rounded-[9px] bg-[#040869] text-white font-playfair text-[22px] font-bold leading-[38px] text-center ${
+          className={`mt-4 w-full h-[51px] rounded-[9px] bg-[#040869] text-white font-playfair text-[22px] font-bold leading-[38px] text-center ${
             loading ? "flex items-center justify-center" : ""
           }`}
           disabled={loading}
@@ -230,42 +231,32 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
           align-items: center;
           justify-content: center;
           height: 100vh;
-          
         }
         @media (max-width: 375px) {
           .cont {
             justify-content: flex-start;
-            
+            height:auto;
+            overflow: hidden;
           }
-            
-        }
-          @media (max-width: 540px) {
-          .cont {
           
+        }
+        @media (max-width: 540px) {
+          .cont {
+            height: auto;
             justify-content: flex-start;
-            padding-top: 2px;
+            padding-top: 5px;
+            overflow: hidden;
           }
-            .contt{
-            min-height: 400px !important;
-            max-height: 500px !important;
-            margin-top: 9px !important;
-            }
-        }
-          @media (min-width: 540px) {
-          .cont {
           
+        }
+        @media (min-width: 540px) {
+          .cont {
             justify-content: flex-start;
             padding-top: 1px;
-            .contt{
-            min-height: 575px !important;
-            max-height: 590px !important;
-            margin-top: 9px !important;
-            padding-bottom: 10px;
-            }
+            overflow: hidden;
           }
-        }
           
-
+        }
         @media (min-width: 1024px) {
           .cont {
             justify-content: flex-start;
@@ -279,6 +270,120 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
       `}</style>
     </div>
   );
+
+  // return (
+  //   <div className=" cont relative w-full h-[100vh] bg-white flex flex-col items-center justify-center">
+  //     <Logo />
+  //     <div
+  //       className="relative flex flex-col items-center justify-around border border-[#040869] mb-24 p-4 rounded-[20px] w-[90%] max-w-[363px]"
+  //       style={{
+  //         height: "auto",
+  //         minHeight: "575px",
+  //         paddingLeft: "15px",
+  //         paddingRight: "15px",
+  //         marginTop: "10vw", // Adjust this margin to provide space between logo and div
+  //       }}
+  //     >
+  //       <img
+  //         src={welcome1}
+  //         alt="Welcome1 Logo"
+  //         className="w-[70%] max-w-[250px] h-auto"
+  //       />
+  //       <h2 className="font-playfair text-[#040869] text-[28px] font-semibold leading-[38px] text-center mt-6">
+  //         Welcome to Loyaltty
+  //       </h2>
+  //       <div className="text-right mt-4 w-full">
+  //         {resendTimer > 0 ? (
+  //           <p className="font-playfair text-[#040869] text-[14px] font-bold leading-[16.8px] underline">
+  //             Resend OTP in <span>{resendTimer}s</span>
+  //           </p>
+  //         ) : (
+  //           <button
+  //             onClick={handleResendOTP}
+  //             className="font-playfair text-[#040869] text-[14px] font-bold leading-[16.8px] underline"
+  //           >
+  //             Resend OTP
+  //           </button>
+  //         )}
+  //       </div>
+  //       <PhoneInput
+  //         country={countryCode}
+  //         value={`${countryCode}${mobile}`}
+  //         disabled
+  //         inputClass="w-full bg-[#EAEBFF]"
+  //         containerClass="w-full mt-4"
+  //       />
+  //       <div className="flex items-center space-x-2 mt-4 w-full">
+  //         <img src={phoneLogo} alt="Phone Logo" className="w-[19px] h-[19px]" />
+  //         <p className="font-playfair text-[#040869] text-[18px] font-bold leading-[21.6px]">
+  //           Enter the OTP
+  //         </p>
+  //       </div>
+  //       <OTPInput
+  //         value={otp}
+  //         onChange={setOTP}
+  //         autoFocus
+  //         OTPLength={4}
+  //         otpType="number"
+  //         disabled={false}
+  //         className="opt-container mt-4 w-full"
+  //         inputClassName="focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-md border border-gray-300 text-center"
+  //       />
+  //       <button
+  //         onClick={handleVerifyOTP}
+  //         className={`mt-4 w-full h-[51px] rounded-[9px] bg-[#040869] text-white font-playfair text-[22px] font-bold leading-[38px] text-center ${
+  //           loading ? "flex items-center justify-center" : ""
+  //         }`}
+  //         disabled={loading}
+  //       >
+  //         {loading ? <CgSpinner className="animate-spin mr-2" /> : null}
+  //         {loading ? "Verifying..." : "Verify OTP"}
+  //       </button>
+  //     </div>
+
+  //     <style jsx>{`
+  //       .cont {
+  //         display: flex;
+  //         flex-direction: column;
+  //         align-items: center;
+  //         justify-content: center;
+  //         height: 100vh;
+          
+  //       }
+  //       @media (max-width: 375px) {
+  //         .cont {
+  //           justify-content: flex-start;
+            
+  //         }
+            
+  //       }
+  //         @media (max-width: 540px) {
+  //         .cont {
+          
+  //           justify-content: flex-start;
+  //           padding-top: 2px;
+  //         }
+  //       }
+  //         @media (min-width: 540px) {
+  //         .cont {
+          
+  //           justify-content: flex-start;
+  //           padding-top: 1px;
+  //         }
+  //       }
+  //       @media (min-width: 1024px) {
+  //         .cont {
+  //           justify-content: flex-start;
+  //         }
+  //       }
+  //       @media (min-width: 1920px) {
+  //         .cont {
+  //           justify-content: center;
+  //         }
+  //       }
+  //     `}</style>
+  //   </div>
+  // );
   };
 
 export default OTPInputComponent;

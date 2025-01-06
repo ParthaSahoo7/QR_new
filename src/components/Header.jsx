@@ -243,17 +243,18 @@ const Header = () => {
  
  
   return (
-    <div className=" cont relative w-full h-[100vh] bg-white flex flex-col items-center  justify-center">
+    <div className=" cont relative w-full h-auto bg-white flex flex-col items-center  justify-center">
       {" "}
       <Logo  />{" "}
       <div
-        className="contt relative flex flex-col gap-4 items-center justify-around border border-[#040869] mb-1 p-4 rounded-[20px] w-[90%] max-w-[363px]"
+        className="contt relative  flex flex-col items-center gap-5 border border-[#040869] mb-1 p-2 rounded-[20px] w-[90%] max-w-[363px]"
         style={{
           height: "auto",
-          minHeight: "575px",
-          paddingLeft: "15px",
-          paddingRight: "15px",
-          marginTop: "10vw", // Adjust this margin to provide space between logo and div
+          minHeight: "525px",
+          paddingLeft: "5px",
+          paddingRight: "5px",
+          marginTop: "1vw", // Adjust this margin to provide space between logo and div
+          overflow:"hidden",
         }}
       >
         {" "}
@@ -323,7 +324,7 @@ const Header = () => {
             today!{" "}
           </p>{" "}
         </div>{" "}
-        <div className="flex gap-2" style={{ width: "90%", height: "auto" }}>
+        <div className="flex gap-2 mt-4" style={{ width: "90%", height: "auto" }}>
           {" "}
           <button
             className="flex justify-around items-center text-white bg-[#040869] rounded-lg pl-1"
@@ -375,7 +376,7 @@ const Header = () => {
             style={{ width: "48%", height: "52px" }}
             onClick={() =>
               window.open(
-                "https://play.google.com/store/apps/details?id=ai.lightring.loyaltty",
+                "https://apps.apple.com/in/app/loyaltty-merchant/id6471106229?platform=iphone",
                 "_blank"
               )
             }
@@ -424,43 +425,36 @@ const Header = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          height: 100vh;
+          height: auto;
+          padding-top:5px;
           
         }
         @media (max-width: 375px) {
           .cont {
+            height: auto; 
             justify-content: flex-start;
-            
+            padding-top: 10px; !important;
+            overflow: hidden;
           }
+            
+          
             
         }
           @media (max-width: 540px) {
           .cont {
-          
+            height: auto;
             justify-content: flex-start;
-            padding-top: 2px;
+            padding-top: 10px;
+            overflow: hidden;
           }
-            .contt{
-            min-height: 400px !important;
-            max-height: 500px !important;
-            margin-top: 9px !important;
-            }
         }
           @media (min-width: 540px) {
           .cont {
           
             justify-content: flex-start;
             padding-top: 1px;
-            .contt{
-            min-height: 575px !important;
-            max-height: 590px !important;
-            margin-top: 9px !important;
-            padding-bottom: 10px;
-            }
           }
         }
-          
-
         @media (min-width: 1024px) {
           .cont {
             justify-content: flex-start;

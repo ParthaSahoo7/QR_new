@@ -19,7 +19,7 @@ function Logo() {
   // );
 
   return (
-    <div className="flex flex-col items-center bg-white w-full mt-5">
+    <div className="flex flex-col items-center bg-white w-full ">
       {" "}
       <img
         src={logo}
@@ -30,14 +30,12 @@ function Logo() {
           maxWidth: "122.79px",
           height: "auto",
           marginTop: "2vw",
-          
         }}
       />{" "}
       <style>
         {" "}
-        {`  @media (max-width: 375px) { .logo-img { width: 40% !important; max-width: 84px !important; margin-top: 10vw !important; } } @media (max-width: 540px) { 
-        .logo-img { width: 40% !important; max-width: 54px !important; margin-top: 3vw !important; 
-        }}
+        {` 
+        @media (max-width: 394px) { .logo-img { width: 40% !important; max-width: 84px !important; margin-top: 1vw !important; } },
          @media (min-width: 768px) { .logo-img { margin-top: 5vw; } } @media (min-width: 1024px) { .logo-img { margin-top: 8vw;  } } @media (max-width: 1280px) { .logo-img { margin-top: 10vw;  } } `}
       </style>{" "}
     </div>
