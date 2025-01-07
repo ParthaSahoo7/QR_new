@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import Logo from "./Logo";
 import phoneLogo from "./Phone.png";
 import welcome1 from "./Welcome2.png";
+import { FaPencilAlt } from "react-icons/fa";
 
 const OTPInputComponent = ({ mobile, countryCode, qrId , setIsOTPSent}) => {
   const [otp, setOTP] = useState("");
@@ -199,13 +200,22 @@ const OTPInputComponent = ({ mobile, countryCode, qrId , setIsOTPSent}) => {
             </button>
           )}
         </div>
-        <PhoneInput
-          country={countryCode}
-          value={`${countryCode}${mobile}`}
-          disabled
-          inputClass="w-full bg-[#EAEBFF]"
-          containerClass="w-full mt-2"
-        />
+        <div className="relative w-full mt-2">
+          <PhoneInput
+            country={countryCode}
+            value={`${countryCode}${mobile}`}
+            disabled
+            inputClass="w-full bg-[#EAEBFF] "
+            containerClass="w-full "
+          />
+          <FaPencilAlt
+            onClick={() => {
+              setIsOTPSent(false);
+              navigate(`/?qr_id=${qrId}`);
+            }}
+            className="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer text-[#040869]"
+          />
+        </div>
         <div className="flex items-center space-x-2 mt-1 w-full">
           <img src={phoneLogo} alt="Phone Logo" className="w-[19px] h-[19px]" />
           <p className="font-playfair text-[#040869] text-[18px] font-bold leading-[21.6px]">
