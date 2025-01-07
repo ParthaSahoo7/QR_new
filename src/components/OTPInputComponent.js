@@ -10,7 +10,7 @@ import Logo from "./Logo";
 import phoneLogo from "./Phone.png";
 import welcome1 from "./Welcome2.png";
 
-const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
+const OTPInputComponent = ({ mobile, countryCode, qrId , setIsOTPSent}) => {
   const [otp, setOTP] = useState("");
   const [loading, setLoading] = useState(false);
   const [resendTimer, setResendTimer] = useState(30); // Timer for the resend button
@@ -175,7 +175,17 @@ const OTPInputComponent = ({ mobile, countryCode, qrId }) => {
         <h2 className="font-playfair text-[#040869] text-[28px] font-semibold leading-[38px] text-center mt-1">
           Welcome to Loyaltty
         </h2>
-        <div className="text-right mt-0 w-full">
+        <div className="flex justify-between mt-0 w-full">
+        <button
+            onClick={() => {
+              setIsOTPSent(false);
+              navigate(`/?qr_id=${qrId}`);
+              
+            }}
+            className="font-playfair text-[#040869] text-[14px] font-bold leading-[16.8px] underline"
+          >
+            Edit Phone Number
+          </button>
           {resendTimer > 0 ? (
             <p className="font-playfair text-[#040869] text-[14px] font-bold leading-[16.8px] underline">
               Resend OTP in <span>{resendTimer}s</span>

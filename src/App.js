@@ -56,7 +56,7 @@ const App = () => {
         element={!isOTPSent ? (
         <MobileInput onOTPRequest={handleOTPRequest}  qrId={qrId} />
       ) : (
-        <OTPInputComponent mobile={mobile} countryCode={countryCode} qrId={qrId}/>
+        <OTPInputComponent mobile={mobile} countryCode={countryCode} qrId={qrId} setIsOTPSent={setIsOTPSent}/>
       )}
       />
       <Route path="/success" element={<Header />} />
