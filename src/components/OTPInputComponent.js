@@ -38,6 +38,7 @@ const OTPInputComponent = ({ mobile, countryCode, qrId , setIsOTPSent}) => {
       await sendRegisterOTP(mobile, countryCode, qrId);
       toast.success('OTP resent successfully!');
       setResendTimer(30); // Reset the timer
+      setOTP(''); // Reset the OTP field
     } catch (error) {
       toast.error(error.message || 'Failed to resend OTP.');
     } finally {

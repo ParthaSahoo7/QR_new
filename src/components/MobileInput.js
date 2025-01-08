@@ -10,6 +10,7 @@ import myImage from "./content.png";
 import Logo from "./Logo";
 import phoneLogo from "./Phone.png";
 import welcome from "./Welcome1.png";
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 const MobileInput = ({ onOTPRequest, qrId }) => {
   const [phone, setPhone] = useState("");
@@ -31,13 +32,15 @@ const MobileInput = ({ onOTPRequest, qrId }) => {
   // }, [location]);
 
   const handleSendOTP = async () => {
-    if (!phone || phone.length < 10) {
+    const phoneNumber = parsePhoneNumberFromString(phone);
+
+    if (!phoneNumber || !phoneNumber.isValid()) {
       toast.error("Please enter a valid phone number.");
       return;
     }
 
-    const countryCode = phone.slice(0, -10);
-    const mobileNumber = phone.slice(-10);
+    const mobileNumber = phoneNumber.nationalNumber;
+    const countryCode = phoneNumber.countryCallingCode;
 
     console.log(countryCode, mobileNumber);
     console.log(qrId);
