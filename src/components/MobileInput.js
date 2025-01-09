@@ -32,18 +32,38 @@ const MobileInput = ({ onOTPRequest, qrId }) => {
   // }, [location]);
 
   const handleSendOTP = async () => {
-    const phoneNumber = parsePhoneNumberFromString(phone);
+    
 
-    if (!phoneNumber || !phoneNumber.isValid()) {
-      toast.error("Please enter a valid phone number.");
+    
+
+    // if (!phone || phone.length<10) {
+    //   toast.error("Please enter a valid phone number.");
+    //   return;
+    // }
+
+    // const countryCode = phone.slice(0, -10);
+    // const mobileNumber = phone.slice(-10);
+
+    if (!phone) {
+      toast.error("Please enter your phone number.");
       return;
     }
 
-    const mobileNumber = phoneNumber.nationalNumber;
-    const countryCode = phoneNumber.countryCallingCode;
+    // Parse the phone number using libphonenumber-js
+    const phoneNumber = parsePhoneNumberFromString(`+${phone}`);
+    console.log(phoneNumber);
+    if (!phoneNumber || !phoneNumber.isValid()) {
+      toast.error("Invalid phone number. Please check the format.");
+      return;
+    }
 
+    const countryCode = phoneNumber.countryCallingCode;
+    const mobileNumber = phoneNumber.nationalNumber;
     console.log(countryCode, mobileNumber);
     console.log(qrId);
+
+
+    
 
     // const countryCode = match[1]; // First capture group: Country code
     // const mobileNumber = match[2].replace(/[\s()]/g, ""); // Remove spaces, '(' and ')' from the mobile number
