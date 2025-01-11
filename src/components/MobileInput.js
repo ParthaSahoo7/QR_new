@@ -1,49 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { BsTelephoneFill } from "react-icons/bs";
-import { useLocation } from "react-router-dom";
+import React, { useState} from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { sendRegisterOTP } from "../api/retailerAPI";
 import { toast } from "react-hot-toast";
 import { CgSpinner } from "react-icons/cg";
-import myImage from "./content.png";
 import Logo from "./Logo";
-import phoneLogo from "./Phone.png";
-import welcome from "./Welcome1.png";
+import phoneLogo from "../assets/Phone.png";
+import welcome from "../assets/Welcome1.png";
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 const MobileInput = ({ onOTPRequest, qrId }) => {
   const [phone, setPhone] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [qrId, setQrId] = useState("");
-
-  // Extract qr_id from the URL
-  // const location = useLocation();
-  // useEffect(() => {
-  //   // const params = new URLSearchParams(location.search);
-  //   const params = new URLSearchParams(location.search);
-  //   const qr_id = params.get('qr_id');
-  //   if (qr_id) {
-  //     setQrId(qr_id);
-  //   } else {
-  //     console.log('QR ID is missing in the URL.');
-  //     // toast.error('QR ID is missing in the URL.');
-  //   }
-  // }, [location]);
 
   const handleSendOTP = async () => {
     
-
-    
-
-    // if (!phone || phone.length<10) {
-    //   toast.error("Please enter a valid phone number.");
-    //   return;
-    // }
-
-    // const countryCode = phone.slice(0, -10);
-    // const mobileNumber = phone.slice(-10);
-
+    if(!qrId){
+      toast.error("QR ID missing in the URL");
+      return;
+    }
     if (!phone) {
       toast.error("Please enter your phone number.");
       return;
@@ -51,7 +26,7 @@ const MobileInput = ({ onOTPRequest, qrId }) => {
 
     // Parse the phone number using libphonenumber-js
     const phoneNumber = parsePhoneNumberFromString(`+${phone}`);
-    console.log(phoneNumber);
+    
     if (!phoneNumber || !phoneNumber.isValid()) {
       toast.error("Invalid phone number. Please check the format.");
       return;
@@ -59,19 +34,7 @@ const MobileInput = ({ onOTPRequest, qrId }) => {
 
     const countryCode = phoneNumber.countryCallingCode;
     const mobileNumber = phoneNumber.nationalNumber;
-    console.log(countryCode, mobileNumber);
-    console.log(qrId);
-
-
     
-
-    // const countryCode = match[1]; // First capture group: Country code
-    // const mobileNumber = match[2].replace(/[\s()]/g, ""); // Remove spaces, '(' and ')' from the mobile number
-
-    // Extract the country code and mobile number
-    // const splitIndex = phone.search(/\d/);
-    // const countryCode = `+${phone.slice(0, splitIndex).replace(/[^0-9]/g, "")}`;
-    // const mobileNumber = phone.slice(splitIndex).replace(/\s/g, "");
 
     if (!countryCode || !mobileNumber) {
       toast.error("Invalid phone number format.");
@@ -136,6 +99,8 @@ const MobileInput = ({ onOTPRequest, qrId }) => {
           value={phone}
           onChange={(value) => setPhone(value)}
           inputClass="w-full bg-[#EAEBFF]"
+          enableSearch={true}
+          searchPlaceholder="Search for a country"
           containerClass="w-full mt-2"
         />{" "}
         {/* <br />
